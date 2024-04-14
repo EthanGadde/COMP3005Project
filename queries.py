@@ -17,7 +17,7 @@ To review the Integrity Violation Attributes of Carleton University, please view
 '''
 
 # Imports
-import psycopg2
+import psycopg
 import csv
 import subprocess
 import os
@@ -61,7 +61,7 @@ def load_database(cursor, conn):
     password = db_password
     host = db_host
     port = db_port
-    conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
+    conn = psycopg.connect(dbname=dbname, user=user, password=password, host=host, port=port)
     cursor = conn.cursor()
     
     # Import the dbexport.sql database data into this database
@@ -101,7 +101,7 @@ def reconnect(cursor, conn):
     password = db_password
     host = db_host
     port = db_port
-    return psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
+    return psycopg.connect(dbname=dbname, user=user, password=password, host=host, port=port)
 
 # Getting the execution time of the query through EXPLAIN ANALYZE - Do NOT Modify
 #================================================
@@ -437,7 +437,7 @@ try:
         host = db_host
         port = db_port
 
-        conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
+        conn = psycopg.connect(dbname=dbname, user=user, password=password, host=host, port=port)
         cursor = conn.cursor()
         
         run_queries(cursor, conn, dbname)
